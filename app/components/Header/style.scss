@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 16px;
+  background-color: #fff;
+  border-bottom:4px solid #0732a1;
+  label{
+    color: #0732a1;
+    font-size: 25px;
+  }
+}
