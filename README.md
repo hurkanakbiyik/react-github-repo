@@ -1,3 +1,5 @@
+https://react-github-repo.herokuapp.com/
+
 ## Quick start
 
 1. Clone this repo using `git clone https://github.com/hurkanakbiyik/react-github-repo`
