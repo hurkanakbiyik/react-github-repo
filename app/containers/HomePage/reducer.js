@@ -24,6 +24,8 @@ function homeReducer(state = initialState, action) {
         .set('repositories', action.payload.items.map((repo) =>
           ({
             id: repo.id,
+            name: repo.name,
+            owner_name: repo.owner.login,
             full_name: repo.full_name,
             language: repo.language,
             description: repo.description,

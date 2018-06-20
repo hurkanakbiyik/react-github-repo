@@ -21,7 +21,7 @@ export default class RepoListItem extends React.PureComponent { // eslint-disabl
           <p className="desc">{item.description}</p>
         </div>
         <div className="repo-contributors">
-          <a href={`/contributers/${item.id}/${item.full_name}`}>Show Top Contributors</a>
+          <a href={`/contributors/${item.owner_name}/${item.name}`}>Show Top Contributors</a>
         </div>
         <div className="repo-item-like">
           <div className="star-area">

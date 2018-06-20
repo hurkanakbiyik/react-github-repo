@@ -14,6 +14,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import './style.scss';
 import Header from '../../components/Header/Header';
+import ContributorPage from '../ContributorPage/Loadable';
 
 const App = () => (
   <div className="app-wrapper">
@@ -26,6 +27,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
+      <Route exact path="/contributors/:owner/:repo" component={ContributorPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
   </div>
