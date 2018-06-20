@@ -1,11 +1,16 @@
-import { fromJS } from 'immutable';
-import { LOAD_CONTRIBUTORS, LOAD_CONTRIBUTORS_ERROR, LOAD_CONTRIBUTORS_SUCCESS } from './constants';
+import { fromJS, List } from 'immutable';
+import {
+  LOAD_CONTRIBUTORS,
+  LOAD_CONTRIBUTORS_ERROR,
+  LOAD_CONTRIBUTORS_SUCCESS,
+  LOAD_MORE_CONTRIBUTORS,
+} from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
   owner: '',
   repo: '',
-  contributors: false,
+  contributors: [],
   total: 0,
   loading: false,
   error: false,
@@ -19,13 +24,19 @@ function contributorReducer(state = initialState, action) {
         .set('repo', action.repo)
         .set('owner', action.owner)
         .set('loading', true)
-        .set('error', false)
-        .set('contributors', false);
-    case LOAD_CONTRIBUTORS_SUCCESS: {
+        .set('error', false);
+    case LOAD_MORE_CONTRIBUTORS:
       return state
-        .set('contributors', action.payload.map((contributor) =>
-          ({ ...contributor })
-        ))
+        .set('loading', true)
+        .set('error', false)
+        .set('page', state.get('page') + 1);
+    case LOAD_CONTRIBUTORS_SUCCESS: {
+      const newContributors = action.payload.map((contributor) =>
+        ({ ...contributor })
+      );
+      const oldContributors = state.get('contributors');
+      return state
+        .set('contributors', [...oldContributors, ...newContributors])
         .set('total', action.payload.total_count)
         .set('loading', false)
         .set('search', action.search);

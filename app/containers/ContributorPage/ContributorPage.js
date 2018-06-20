@@ -24,10 +24,13 @@ export default class ContributorPage extends React.PureComponent { // eslint-dis
       section = (
         <section>
           <div className="list-header">
-            Top 10 Contributors of <b>{this.props.match.params.repo}</b>
+            <span>Top {this.props.contributors.length} Contributors of <b>{this.props.match.params.repo}</b></span>
           </div>
           <div className="list-area">
             <ContributorList {...contributorsListProps} />
+          </div>
+          <div className="button-area">
+            <button type="submit" className="load-button" onClick={() => this.props.onLoadMore()}>LOAD MORE...</button>
           </div>
         </section>
       );
@@ -59,5 +62,6 @@ ContributorPage.propTypes = {
     PropTypes.bool,
   ]),
   onReady: PropTypes.func,
+  onLoadMore: PropTypes.func,
   total: PropTypes.number,
 };

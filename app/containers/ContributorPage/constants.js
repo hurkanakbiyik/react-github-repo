@@ -1,3 +1,4 @@
 export const LOAD_CONTRIBUTORS = 'boilerplate/App/LOAD_CONTRIBUTORS';
 export const LOAD_CONTRIBUTORS_SUCCESS = 'boilerplate/App/LOAD_CONTRIBUTORS_SUCCESS';
 export const LOAD_CONTRIBUTORS_ERROR = 'boilerplate/App/LOAD_CONTRIBUTORS_ERROR';
+export const LOAD_MORE_CONTRIBUTORS = 'boilerplate/App/LOAD_MORE_CONTRIBUTORS';

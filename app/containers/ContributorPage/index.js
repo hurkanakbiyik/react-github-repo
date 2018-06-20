@@ -5,7 +5,7 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
-import { loadContributors } from './actions';
+import { loadContributors, loadMore } from './actions';
 import {
   makeSelectTotal,
   makeSelectOwner,
@@ -18,6 +18,9 @@ import ContributorPage from './ContributorPage';
 const mapDispatchToProps = (dispatch) => ({
   onReady: (owner, repo) => {
     dispatch(loadContributors(owner, repo));
+  },
+  onLoadMore: () => {
+    dispatch(loadMore());
   }
 });
 
@@ -27,7 +30,7 @@ const mapStateToProps = createStructuredSelector({
   repo: makeSelectRepo(),
   loading: makeSelectLoading(),
   total: makeSelectTotal(),
-  error: makeSelectError(),
+  error: makeSelectError()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

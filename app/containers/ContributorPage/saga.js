@@ -7,7 +7,7 @@ import { makeSelectRepo, makeSelectOwner, makeSelectPage } from './selectors';
 
 import githubService from '../../services/github.services';
 import { contributorsFailed, contributorsLoaded } from './actions';
-import { LOAD_CONTRIBUTORS } from './constants';
+import { LOAD_CONTRIBUTORS, LOAD_MORE_CONTRIBUTORS } from './constants';
 
 export function* getContributors() {
   const owner = yield select(makeSelectOwner());
@@ -26,4 +26,5 @@ export function* getContributors() {
 
 export default function* contributorSagaWatcher() {
   yield takeLatest(LOAD_CONTRIBUTORS, getContributors);
+  yield takeLatest(LOAD_MORE_CONTRIBUTORS, getContributors);
 }

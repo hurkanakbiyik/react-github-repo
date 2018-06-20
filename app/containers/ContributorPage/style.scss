@@ -3,10 +3,30 @@
   min-width: 100%;
   display: flex;
   flex-direction: column;
+  .list-header{
+    height: 32px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    background: #0732a1;
+    color: #fff;
+  }
   .list-area{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .button-area{
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    .load-button{
+      background: #0732a1;
+      cursor: pointer;
+      color: #fff;
+      border-radius: 5px;
+      padding: 4px 8px;
+    }
   }
 }
