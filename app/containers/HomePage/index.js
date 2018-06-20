@@ -6,17 +6,24 @@ import injectSaga from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';
-import { changeSearch } from './actions';
+import { changeSearch, loadRepositories } from './actions';
+import { makeSelectRepositories, makeSelectSearch, makeSelectTotal } from './selectors';
+import { makeSelectError, makeSelectLoading } from '../App/selectors';
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeSearch: (evt) => dispatch(changeSearch(evt.target.value)),
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    // dispatch(loadRepos());
+    dispatch(loadRepositories());
   }
 });
 
 const mapStateToProps = createStructuredSelector({
+  repositories: makeSelectRepositories(),
+  search: makeSelectSearch(),
+  total: makeSelectTotal(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
