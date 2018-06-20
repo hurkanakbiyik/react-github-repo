@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import './style.scss';
+import ContributorList from '../../components/ContributorList/ContributorList';
 
 export default class ContributorPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -22,8 +23,11 @@ export default class ContributorPage extends React.PureComponent { // eslint-dis
     if (contributorsListProps.contributors || contributorsListProps.loading) {
       section = (
         <section>
+          <div className="list-header">
+            Top 10 Contributors of <b>{this.props.match.params.repo}</b>
+          </div>
           <div className="list-area">
-            {contributorsListProps.contributors.map((item) => <span key={item.id}>{item.id}</span>)}
+            <ContributorList {...contributorsListProps} />
           </div>
         </section>
       );
