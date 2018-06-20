@@ -10,11 +10,12 @@ describe('github', () => {
       const username = 'tetris';
       githubService('/search/repositories', {
         method: 'GET'
-      }, { q: username })
+      }, { q: username, per_page: 6 })
         .catch((error) => done(error))
         .then((json) => {
           expect(json.total_count).toBeGreaterThan(-1);
           expect(json.items).toBeDefined();
+          expect(json.items.length).toBe(6);
           done();
         });
     });
