@@ -3,25 +3,40 @@
   min-width: 100%;
   display: flex;
   flex-direction: column;
-  .error-info{
-    padding: 8px 24px;
-    background-color: #ff5346;
-    p{
-      color:#fff;
-      font-size: 20px;
-    }
-  }
-  section{
+  .search-header{
     display: flex;
-    flex: 1;
-    background-color: #ade0ff;
-
-    .list-area{
-      flex: 1;
-      position: relative;
-    }
-    .map-area{
-      flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    padding: 8px 16px;
+    .search-area{
+      padding: 0 8px;
+      margin-left: 16px;
+      width: 460px;
+      border-radius: 8px;
+      border: 1px solid #0732a157;
+      display: flex;
+      align-items: center;
+      svg{
+        fill: #bababa;
+      }
+      &:focus-within{
+        border: 1px solid #0732a1;
+        svg{
+          fill: #0732a1;
+        }
+      }
+      form{
+        display: flex;
+        flex: 1 1 auto;
+        input{
+          flex: 1 1 auto;
+          padding: 8px 4px;
+          border: none;
+          outline: none;
+        }
+      }
     }
   }
+
 }

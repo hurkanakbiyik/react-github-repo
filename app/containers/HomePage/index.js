@@ -6,8 +6,14 @@ import injectSaga from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';
+import { changeSearch } from './actions';
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+  onChangeSearch: (evt) => dispatch(changeSearch(evt.target.value)),
+  onSubmitForm: (evt) => {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    // dispatch(loadRepos());
+  }
 });
 
 const mapStateToProps = createStructuredSelector({
