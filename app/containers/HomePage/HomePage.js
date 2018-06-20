@@ -4,6 +4,7 @@ import MdSearch from 'react-icons/lib/md/search';
 import PropTypes from 'prop-types';
 
 import './style.scss';
+import ReposList from '../../components/ReposList/ReposList';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -21,16 +22,17 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       error,
       repositories,
     };
-    let section = <div className="error-info"><p>You need to search and press "Enter"!</p></div>;
-    if (repositoriesListProps.repositories) {
-      const repos = repositoriesListProps.repositories.map((repo) => <h3 key={repo.id}>{repo.full_name}</h3>);
+    let section = '';
+    if (repositoriesListProps.repositories || repositoriesListProps.loading) {
       section = (
         <section>
           <div className="list-area">
-            {repos}
+            <ReposList {...repositoriesListProps} />
           </div>
         </section>
       );
+    } else {
+      section = <div className="error-info"><p>You need to search and press Enter!</p></div>;
     }
     return (
       <article>
