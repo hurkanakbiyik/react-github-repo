@@ -33,4 +33,19 @@ describe('github', () => {
       });
     });
   });
+
+  describe('repository contributors', () => {
+    it('should return contributors of a repo', (done) => {
+      const username = 'dtrupenn';
+      const reponame = 'Tetris';
+      githubService(`/repos/${username}/${reponame}/contributors`, {
+        method: 'GET'
+      }, { per_page: 5 })
+        .catch((error) => done(error))
+        .then((json) => {
+          expect(json.length).toBeGreaterThan(-1);
+          done();
+        });
+    });
+  });
 });
