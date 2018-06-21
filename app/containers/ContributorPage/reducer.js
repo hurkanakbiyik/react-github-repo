@@ -1,4 +1,4 @@
-import { fromJS, List } from 'immutable';
+import { fromJS } from 'immutable';
 import {
   LOAD_CONTRIBUTORS,
   LOAD_CONTRIBUTORS_ERROR,
@@ -14,7 +14,8 @@ const initialState = fromJS({
   total: 0,
   loading: false,
   error: false,
-  page: 1
+  page: 1,
+  perPage: 10
 });
 
 function contributorReducer(state = initialState, action) {
@@ -29,6 +30,7 @@ function contributorReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
+        .set('perPage', 5)
         .set('page', state.get('page') + 1);
     case LOAD_CONTRIBUTORS_SUCCESS: {
       const newContributors = action.payload.map((contributor) =>

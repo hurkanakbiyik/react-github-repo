@@ -20,6 +20,11 @@ const makeSelectPage = () => createSelector(
   (contributorState) => contributorState.get('page')
 );
 
+const makeSelectPerPage = () => createSelector(
+  selectContributor,
+  (contributorState) => contributorState.get('perPage')
+);
+
 const makeSelectContributors = () => createSelector(
   selectContributor,
   (contributorState) => contributorState.get('contributors')
@@ -30,4 +35,4 @@ const makeSelectTotal = () => createSelector(
   (contributorState) => contributorState.get('total')
 );
 
-export { selectContributor, makeSelectPage, makeSelectTotal, makeSelectContributors, makeSelectOwner, makeSelectRepo };
+export { selectContributor, makeSelectPage, makeSelectTotal, makeSelectContributors, makeSelectOwner, makeSelectRepo, makeSelectPerPage };
