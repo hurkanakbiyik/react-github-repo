@@ -14,7 +14,8 @@ const initialState = fromJS({
   total: 0,
   loading: false,
   error: false,
-  page: 1
+  page: 1,
+  perPage: 10
 });
 
 function contributorReducer(state = initialState, action) {
@@ -29,7 +30,8 @@ function contributorReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .set('page', state.get('page') + 1);
+        .set('perPage', 5)
+        .set('page', Math.ceil(state.get('contributors').length / 5) + 1);
     case LOAD_CONTRIBUTORS_SUCCESS: {
       const newContributors = action.payload.map((contributor) =>
         ({ ...contributor })
