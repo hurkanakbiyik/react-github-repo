@@ -20,11 +20,6 @@ const makeSelectPage = () => createSelector(
   (contributorState) => contributorState.get('page')
 );
 
-const makeSelectPerPage = () => createSelector(
-  selectContributor,
-  (contributorState) => contributorState.get('perPage')
-);
-
 const makeSelectContributors = () => createSelector(
   selectContributor,
   (contributorState) => contributorState.get('contributors')
